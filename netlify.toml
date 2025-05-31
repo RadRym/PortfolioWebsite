@@ -1,0 +1,30 @@
+[build]
+  publish = "."
+
+# Redirect API calls to our function
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api"
+  status = 200
+
+# Also handle direct profile/property calls for backward compatibility
+[[redirects]]
+  from = "/:profile/:property"
+  to = "/.netlify/functions/api"
+  status = 200
+  
+# Handle specific engineering API paths
+[[redirects]]
+  from = "/profiles/*"
+  to = "/.netlify/functions/api"
+  status = 200
+
+[[redirects]]
+  from = "/materials/*"
+  to = "/.netlify/functions/api"
+  status = 200
+
+[[redirects]]
+  from = "/bolts/*"
+  to = "/.netlify/functions/api"
+  status = 200

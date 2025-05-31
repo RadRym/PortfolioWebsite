@@ -1,0 +1,107 @@
+{
+  "category": "Bolts",
+  "subcategory": "DIN 931",
+  "description": "Hex head bolts, partially threaded",
+  "standard": "DIN 931 / ISO 4014",
+  "material_grades": ["4.6", "5.6", "8.8", "10.9", "12.9"],
+  "bolts": {
+    "M6": {
+      "d": 6,
+      "P": 1.0,
+      "dk": 10,
+      "k": 4,
+      "s": 10,
+      "e": 11.5,
+      "dw": 11.5,
+      "A_gross": 28.3,
+      "A_stress": 20.1,
+      "lengths": [16, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 80, 90, 100]
+    },
+    "M8": {
+      "d": 8,
+      "P": 1.25,
+      "dk": 13,
+      "k": 5.3,
+      "s": 13,
+      "e": 15.0,
+      "dw": 15.0,
+      "A_gross": 50.3,
+      "A_stress": 36.6,
+      "lengths": [16, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 80, 90, 100, 110, 120, 130, 140, 150]
+    },
+    "M10": {
+      "d": 10,
+      "P": 1.5,
+      "dk": 16,
+      "k": 6.4,
+      "s": 17,
+      "e": 19.6,
+      "dw": 19.6,
+      "A_gross": 78.5,
+      "A_stress": 58.0,
+      "lengths": [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 180, 200]
+    },
+    "M12": {
+      "d": 12,
+      "P": 1.75,
+      "dk": 18,
+      "k": 7.5,
+      "s": 19,
+      "e": 21.9,
+      "dw": 21.9,
+      "A_gross": 113.1,
+      "A_stress": 84.3,
+      "lengths": [25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 180, 200, 220, 240, 260]
+    },
+    "M16": {
+      "d": 16,
+      "P": 2.0,
+      "dk": 24,
+      "k": 10,
+      "s": 24,
+      "e": 27.7,
+      "dw": 27.7,
+      "A_gross": 201.1,
+      "A_stress": 157.0,
+      "lengths": [35, 40, 45, 50, 55, 60, 65, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 180, 200, 220, 240, 260, 280, 300]
+    },
+    "M20": {
+      "d": 20,
+      "P": 2.5,
+      "dk": 30,
+      "k": 12.5,
+      "s": 30,
+      "e": 34.6,
+      "dw": 34.6,
+      "A_gross": 314.2,
+      "A_stress": 245.0,
+      "lengths": [40, 45, 50, 55, 60, 65, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 180, 200, 220, 240, 260, 280, 300]
+    }
+  },
+  "material_properties": {
+    "4.6": {"fu": 400, "fy": 240, "description": "Low carbon steel"},
+    "5.6": {"fu": 500, "fy": 300, "description": "Low carbon steel"},
+    "8.8": {"fu": 800, "fy": 640, "description": "Medium carbon steel, quenched and tempered"},
+    "10.9": {"fu": 1000, "fy": 900, "description": "Alloy steel, quenched and tempered"},
+    "12.9": {"fu": 1200, "fy": 1080, "description": "Alloy steel, quenched and tempered"}
+  },
+  "properties_description": {
+    "d": "Średnica nominalna",
+    "P": "Skok gwintu",
+    "dk": "Średnica łba",
+    "k": "Wysokość łba",
+    "s": "Klucz",
+    "e": "Średnica koła opisanego na łbie",
+    "dw": "Średnica podkładki",
+    "A_gross": "Pole przekroju brutto",
+    "A_stress": "Pole przekroju obliczeniowe",
+    "lengths": "Dostępne długości",
+    "fu": "Wytrzymałość na rozciąganie",
+    "fy": "Granica plastyczności"
+  },
+  "units": {
+    "d": "mm", "P": "mm", "dk": "mm", "k": "mm", "s": "mm",
+    "e": "mm", "dw": "mm", "A_gross": "mm²", "A_stress": "mm²",
+    "lengths": "mm", "fu": "MPa", "fy": "MPa"
+  }
+}

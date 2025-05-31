@@ -12,15 +12,46 @@ function loadData(category, subcategory = null) {
   }
 
   try {
-    const filePath = subcategory 
-      ? path.join(__dirname, '..', 'data', category, `${subcategory}.json`)
-      : path.join(__dirname, '..', 'data', category, `${category}.json`);
+    // W środowisku Netlify functions są w /var/task/
+    // Dane są w /var/task/netlify/data/
+    let filePath;
+    
+    if (subcategory) {
+      filePath = path.join(__dirname, '..', 'data', category, `${subcategory}.json`);
+    } else {
+      filePath = path.join(__dirname, '..', 'data', category, `${category}.json`);
+    }
+    
+    // Debug: pokaż ścieżkę
+    console.log(`Trying to load: ${filePath}`);
+    console.log(`__dirname: ${__dirname}`);
+    
+    // Sprawdź czy plik istnieje
+    if (!fs.existsSync(filePath)) {
+      console.error(`File does not exist: ${filePath}`);
+      // Sprawdź dostępne pliki w katalogu
+      const dirPath = path.dirname(filePath);
+      if (fs.existsSync(dirPath)) {
+        const files = fs.readdirSync(dirPath);
+        console.log(`Available files in ${dirPath}:`, files);
+      } else {
+        console.log(`Directory does not exist: ${dirPath}`);
+        // Sprawdź katalog wyżej
+        const parentDir = path.join(__dirname, '..');
+        if (fs.existsSync(parentDir)) {
+          const parentFiles = fs.readdirSync(parentDir);
+          console.log(`Available files in parent directory:`, parentFiles);
+        }
+      }
+      return null;
+    }
     
     const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
     dataCache[cacheKey] = data;
     return data;
   } catch (error) {
     console.error(`Error loading data for ${cacheKey}:`, error.message);
+    console.error(`Error details:`, error);
     return null;
   }
 }

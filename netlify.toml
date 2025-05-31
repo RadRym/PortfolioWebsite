@@ -2,6 +2,11 @@
   publish = "."
 
 # Functions configuration
+[[redirects]]
+  from = "/api-protected/*"
+  to = "/.netlify/functions/api-protected"
+  status = 200
+
 [functions]
   node_bundler = "esbuild"
   included_files = [

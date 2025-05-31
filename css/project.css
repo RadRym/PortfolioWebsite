@@ -140,7 +140,6 @@ nav {
 .project-image {
     width: 100%;
     height: 400px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -149,6 +148,14 @@ nav {
     font-size: 1.2rem;
     font-weight: 500;
     margin-bottom: 2rem;
+}
+
+.project-image.api-bg {
+    background-image: url('../images/engineering-api.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
 .project-details h2 {

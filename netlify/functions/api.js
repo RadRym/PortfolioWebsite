@@ -12,37 +12,45 @@ function loadData(category, subcategory = null) {
   }
 
   try {
-    // W środowisku Netlify functions są w /var/task/
-    // Dane są w /var/task/netlify/data/
+    // W Netlify Functions ścieżki zaczynają się od repo root
     let filePath;
     
     if (subcategory) {
-      filePath = path.join(__dirname, '..', 'data', category, `${subcategory}.json`);
+      filePath = `./netlify/data/${category}/${subcategory}.json`;
     } else {
-      filePath = path.join(__dirname, '..', 'data', category, `${category}.json`);
+      filePath = `./netlify/data/${category}/${category}.json`;
     }
     
     // Debug: pokaż ścieżkę
     console.log(`Trying to load: ${filePath}`);
-    console.log(`__dirname: ${__dirname}`);
+    console.log(`Process cwd: ${process.cwd()}`);
     
     // Sprawdź czy plik istnieje
     if (!fs.existsSync(filePath)) {
       console.error(`File does not exist: ${filePath}`);
-      // Sprawdź dostępne pliki w katalogu
-      const dirPath = path.dirname(filePath);
-      if (fs.existsSync(dirPath)) {
-        const files = fs.readdirSync(dirPath);
-        console.log(`Available files in ${dirPath}:`, files);
-      } else {
-        console.log(`Directory does not exist: ${dirPath}`);
-        // Sprawdź katalog wyżej
-        const parentDir = path.join(__dirname, '..');
-        if (fs.existsSync(parentDir)) {
-          const parentFiles = fs.readdirSync(parentDir);
-          console.log(`Available files in parent directory:`, parentFiles);
+      
+      // Debug - sprawdź jakie pliki są dostępne
+      try {
+        const netlifyDir = './netlify';
+        if (fs.existsSync(netlifyDir)) {
+          console.log('Contents of ./netlify:', fs.readdirSync(netlifyDir));
+          
+          const dataDir = './netlify/data';
+          if (fs.existsSync(dataDir)) {
+            console.log('Contents of ./netlify/data:', fs.readdirSync(dataDir));
+            
+            const categoryDir = `./netlify/data/${category}`;
+            if (fs.existsSync(categoryDir)) {
+              console.log(`Contents of ${categoryDir}:`, fs.readdirSync(categoryDir));
+            }
+          }
+        } else {
+          console.log('Root directory contents:', fs.readdirSync('./'));
         }
+      } catch (dirError) {
+        console.error('Error reading directories:', dirError.message);
       }
+      
       return null;
     }
     

@@ -1,6 +1,13 @@
 [build]
   publish = "."
 
+# Functions configuration
+[functions]
+  node_bundler = "esbuild"
+  included_files = [
+    "./netlify/data/**/*.json"
+  ]
+
 # Redirect API calls to our function
 [[redirects]]
   from = "/api/*"

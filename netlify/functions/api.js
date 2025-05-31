@@ -94,18 +94,26 @@ exports.handler = async (event, context) => {
     };
   }
 
-  // Parse URL - expected format: /api/category/subcategory/item/property
-  // Examples: 
-  // /api/profiles/hea/HEA120/tw
-  // /api/materials/steel/S235/fy
-  // /api/bolts/din931/M12/d
+  // Parse URL - handle both direct function calls and redirects
+  // Direct: /.netlify/functions/api/profiles/hea/HEA120/tw
+  // Redirect: /api/profiles/hea/HEA120/tw
   
-  const segments = event.path.split('/').filter(Boolean);
+  console.log('Full event.path:', event.path);
+  console.log('Query parameters:', event.queryStringParameters);
   
-  // Remove 'api' from segments if present
-  if (segments[0] === 'api') {
+  let segments = event.path.split('/').filter(Boolean);
+  console.log('Initial segments:', segments);
+  
+  // Remove netlify function path if present
+  if (segments[0] === '.netlify' && segments[1] === 'functions' && segments[2] === 'api') {
+    segments = segments.slice(3); // Remove ['.netlify', 'functions', 'api']
+  }
+  // Remove 'api' from segments if present (for redirected calls)
+  else if (segments[0] === 'api') {
     segments.shift();
   }
+  
+  console.log('Cleaned segments:', segments);
 
   if (segments.length < 2) {
     return {

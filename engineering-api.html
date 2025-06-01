@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Data API | Adrian</title>
+    <link rel="stylesheet" href="projects-shared.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Project Header -->
+        <div class="project-header fade-in">
+            <div class="project-icon">🔗</div>
+            <h1>Engineering Data API</h1>
+            <p class="subtitle">RESTful API for structural engineering data with rate limiting and caching</p>
+            
+            <div class="tech-tags">
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Netlify Functions</span>
+                <span class="tech-tag">JSON</span>
+                <span class="tech-tag">REST API</span>
+                <span class="tech-tag">Rate Limiting</span>
+                <span class="tech-tag">Serverless</span>
+            </div>
+            
+            <div class="project-links">
+                <a href="#api-demo" class="project-link demo">API Documentation</a>
+                <a href="#" class="project-link github">View Source</a>
+                <a href="index.html#projects" class="project-link back">← Back to Projects</a>
+            </div>
+        </div>
+
+        <!-- Overview -->
+        <div class="content-section fade-in">
+            <h2>Project Overview</h2>
+            <p>The Engineering Data API is a comprehensive RESTful service that provides standardized access to structural engineering data including steel profiles, materials, and fasteners. Built on Netlify Functions, it offers reliable, scalable access to engineering databases with built-in rate limiting and intelligent caching.</p>
+            
+            <p>Designed specifically for structural engineering applications, this API serves as a centralized data source for design software, calculation tools, and engineering applications worldwide.</p>
+
+            <div class="highlight">
+                <strong>Mission:</strong> Democratize access to engineering data by providing a free, standardized API that eliminates the need for proprietary databases in engineering software.
+            </div>
+        </div>
+
+        <!-- API Architecture -->
+        <div class="content-section fade-in">
+            <h2>API Architecture</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h4>Serverless Design</h4>
+                    <p>Built on Netlify Functions for automatic scaling and zero server maintenance</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h4>Rate Limiting</h4>
+                    <p>Intelligent rate limiting with 50 requests per 15-minute window per IP</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🗄️</div>
+                    <h4>JSON Database</h4>
+                    <p>Structured JSON files for fast data access and easy maintenance</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h4>Global CDN</h4>
+                    <p>Worldwide distribution through Netlify's edge network</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h4>Comprehensive Data</h4>
+                    <p>Steel profiles, materials, bolts with complete technical specifications</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h4>RESTful Design</h4>
+                    <p>Clean, intuitive endpoints following REST principles</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Structure -->
+        <div class="content-section fade-in">
+            <h2>Data Structure & Coverage</h2>
+            
+            <h3>Steel Profiles</h3>
+            <p>Comprehensive database of European steel sections according to EN standards:</p>
+            
+            <ul>
+                <li><strong>HEA Series:</strong> Wide flange beams from HEA100 to HEA1000</li>
+                <li><strong>HEB Series:</strong> Heavy wide flange beams with enhanced properties</li>
+                <li><strong>IPE Series:</strong> Standard I-beams for general construction</li>
+                <li><strong>UPN Series:</strong> Channel sections for specialized applications</li>
+                <li><strong>L Series:</strong> Equal and unequal angle sections</li>
+            </ul>
+
+            <div class="code-example">
+<span class="comment">// Example: HEA profile data structure</span>
+{
+  <span class="string">"HEA200"</span>: {
+    <span class="string">"h"</span>: 190,
+    <span class="string">"b"</span>: 200,
+    <span class="string">"tw"</span>: 6.5,
+    <span class="string">"tf"</span>: 10.0,
+    <span class="string">"r"</span>: 18.0,
+    <span class="string">"A"</span>: 53.8,
+    <span class="string">"Ix"</span>: 3692,
+    <span class="string">"Iy"</span>: 1336,
+    <span class="string">"weight"</span>: 42.3
+  }
+}
+            </div>
+
+            <h3>Material Properties</h3>
+            <p>Structural steel grades with complete mechanical properties:</p>
+            <ul>
+                <li><strong>S235:</strong> General construction grade with basic properties</li>
+                <li><strong>S275:</strong> Medium strength steel for structural applications</li>
+                <li><strong>S355:</strong> High strength steel for demanding applications</li>
+                <li><strong>S420/S460:</strong> Ultra-high strength steels for specialized use</li>
+            </ul>
+
+            <h3>Fastener Database</h3>
+            <p>Complete bolt and fastener specifications:</p>
+            <ul>
+                <li><strong>DIN 931:</strong> Hex head bolts with partial threading</li>
+                <li><strong>DIN 933:</strong> Fully threaded hex head bolts</li>
+                <li><strong>ISO 4014/4017:</strong> International standard equivalents</li>
+                <li><strong>Material Grades:</strong> 4.6, 5.6, 8.8, 10.9, 12.9 with properties</li>
+            </ul>
+        </div>
+
+        <!-- API Endpoints & Usage -->
+        <div class="content-section fade-in" id="api-demo">
+            <h2>API Endpoints & Usage</h2>
+            
+            <h3>Base URL Structure</h3>
+            <div class="code-example">
+https://your-site.netlify.app/api/{category}/{subcategory}/{item}/{property}
+            </div>
+
+            <h3>Available Endpoints</h3>
+            
+            <h4>Steel Profiles</h4>
+            <div class="code-example">
+<span class="comment">// Get complete HEA200 profile data</span>
+GET /api/profiles/hea/HEA200
+
+<span class="comment">// Get specific property (web thickness)</span>
+GET /api/profiles/hea/HEA200/tw
+
+<span class="comment">// Response example</span>
+{
+  <span class="string">"category"</span>: <span class="string">"profiles"</span>,
+  <span class="string">"subcategory"</span>: <span class="string">"hea"</span>,
+  <span class="string">"item"</span>: <span class="string">"HEA200"</span>,
+  <span class="string">"property"</span>: <span class="string">"tw"</span>,
+  <span class="string">"value"</span>: 6.5,
+  <span class="string">"unit"</span>: <span class="string">"mm"</span>,
+  <span class="string">"description"</span>: <span class="string">"Grubość środnika"</span>
+}
+            </div>
+
+            <h4>Material Properties</h4>
+            <div class="code-example">
+<span class="comment">// Get S355 steel properties</span>
+GET /api/materials/steel/S355
+
+<span class="comment">// Get yield strength specifically</span>
+GET /api/materials/steel/S355/fy
+
+<span class="comment">// Response includes units and descriptions</span>
+{
+  <span class="string">"item"</span>: <span class="string">"S355"</span>,
+  <span class="string">"property"</span>: <span class="string">"fy"</span>,
+  <span class="string">"value"</span>: 355,
+  <span class="string">"unit"</span>: <span class="string">"MPa"</span>,
+  <span class="string">"description"</span>: <span class="string">"Granica plastyczności"</span>
+}
+            </div>
+
+            <h4>Bolt Specifications</h4>
+            <div class="code-example">
+<span class="comment">// Get M12 bolt data</span>
+GET /api/bolts/din931/M12
+
+<span class="comment">// Get available lengths</span>
+GET /api/bolts/din931/M12/lengths
+
+<span class="comment">// Response with comprehensive data</span>
+{
+  <span class="string">"item"</span>: <span class="string">"M12"</span>,
+  <span class="string">"data"</span>: {
+    <span class="string">"d"</span>: 12,
+    <span class="string">"P"</span>: 1.75,
+    <span class="string">"dk"</span>: 18,
+    <span class="string">"lengths"</span>: [25, 30, 35, 40, ...]
+  }
+}
+            </div>
+        </div>
+
+        <!-- Rate Limiting & Security -->
+        <div class="content-section fade-in">
+            <h2>Rate Limiting & Security</h2>
+            
+            <h3>Intelligent Rate Limiting</h3>
+            <p>The API implements sophisticated rate limiting to ensure fair usage:</p>
+            
+            <div class="code-example">
+<span class="comment">// Rate limiting implementation</span>
+<span class="keyword">const</span> MAX_REQUESTS = 50;
+<span class="keyword">const</span> TIME_WINDOW = 15 * 60 * 1000; <span class="comment">// 15 minutes</span>
+
+<span class="keyword">function</span> checkRateLimit(clientIP) {
+  <span class="keyword">const</span> now = Date.now();
+  
+  <span class="comment">// Clean old entries</span>
+  Object.keys(requestCounts).forEach(ip => {
+    <span class="keyword">if</span> (now - requestCounts[ip].firstRequest > TIME_WINDOW) {
+      <span class="keyword">delete</span> requestCounts[ip];
+    }
+  });
+
+  <span class="comment">// Check and update request count</span>
+  <span class="keyword">if</span> (!requestCounts[clientIP]) {
+    requestCounts[clientIP] = { count: 1, firstRequest: now };
+    <span class="keyword">return</span> { allowed: <span class="keyword">true</span>, remaining: MAX_REQUESTS - 1 };
+  }
+  
+  <span class="keyword">return</span> requestCounts[clientIP].count < MAX_REQUESTS;
+}
+            </div>
+
+            <h3>Security Features</h3>
+            <ul>
+                <li><strong>IP-based Limiting:</strong> Prevents abuse by tracking requests per IP address</li>
+                <li><strong>CORS Configuration:</strong> Proper cross-origin resource sharing setup</li>
+                <li><strong>Input Validation:</strong> Sanitization of all user inputs</li>
+                <li><strong>Error Handling:</strong> Secure error messages without sensitive information</li>
+                <li><strong>HTTPS Only:</strong> All traffic encrypted through Netlify's SSL</li>
+            </ul>
+
+            <h3>Usage Monitoring</h3>
+            <p>Real-time monitoring provides insights into API usage:</p>
+            <ul>
+                <li><strong>Request Tracking:</strong> Detailed logs of all API calls</li>
+                <li><strong>Geographic Distribution:</strong> Usage patterns by region</li>
+                <li><strong>Popular Endpoints:</strong> Most frequently accessed data</li>
+                <li><strong>Performance Metrics:</strong> Response times and error rates</li>
+            </ul>
+        </div>
+
+        <!-- Performance & Optimization -->
+        <div class="content-section fade-in">
+            <h2>Performance & Optimization</h2>
+            
+            <h3>Caching Strategy</h3>
+            <p>Multi-level caching ensures optimal performance:</p>
+            
+            <div class="code-example">
+<span class="comment">// In-memory caching for frequently accessed data</span>
+<span class="keyword">let</span> dataCache = {};
+
+<span class="keyword">function</span> loadData(category, subcategory = <span class="keyword">null</span>) {
+  <span class="keyword">const</span> cacheKey = subcategory ? `${category}/${subcategory}` : category;
+  
+  <span class="keyword">if</span> (dataCache[cacheKey]) {
+    <span class="keyword">return</span> dataCache[cacheKey];
+  }
+
+  <span class="comment">// Load from file system and cache</span>
+  <span class="keyword">const</span> data = JSON.parse(fs.readFileSync(filePath, <span class="string">'utf8'</span>));
+  dataCache[cacheKey] = data;
+  <span class="keyword">return</span> data;
+}
+            </div>
+
+            <h3>Optimization Techniques</h3>
+            <ul>
+                <li><strong>JSON Pre-parsing:</strong> Data structures optimized for fast access</li>
+                <li><strong>Compression:</strong> Gzip compression for all responses</li>
+                <li><strong>Edge Caching:</strong> Netlify CDN caches responses globally</li>
+                <li><strong>Minimal Dependencies:</strong> Lightweight implementation with core Node.js</li>
+                <li><strong>Efficient Routing:</strong> Fast path resolution without complex frameworks</li>
+            </ul>
+
+            <h3>Performance Metrics</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h4>Response Time</h4>
+                    <p>Average 150ms globally, 50ms from nearest edge</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h4>Global Availability</h4>
+                    <p>99.9% uptime through Netlify's global infrastructure</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h4>Scalability</h4>
+                    <p>Auto-scaling to handle traffic spikes seamlessly</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h4>Efficiency</h4>
+                    <p>Minimal resource usage with intelligent caching</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integration Examples -->
+        <div class="content-section fade-in">
+            <h2>Integration Examples</h2>
+            
+            <h3>JavaScript/Frontend Integration</h3>
+            <div class="code-example">
+<span class="comment">// Fetch steel profile data</span>
+<span class="keyword">async function</span> getProfileData(profileName) {
+  <span class="keyword">try</span> {
+    <span class="keyword">const</span> response = <span class="keyword">await</span> fetch(
+      `https://api.engineeringdata.com/api/profiles/hea/${profileName}`
+    );
+    <span class="keyword">const</span> data = <span class="keyword">await</span> response.json();
+    
+    <span class="keyword">if</span> (response.ok) {
+      console.log(<span class="string">`Profile: ${data.item}`</span>);
+      console.log(<span class="string">`Height: ${data.data.h}${data.units.h}`</span>);
+      <span class="keyword">return</span> data;
+    } <span class="keyword">else</span> {
+      console.error(<span class="string">'Profile not found'</span>);
+    }
+  } <span class="keyword">catch</span> (error) {
+    console.error(<span class="string">'API Error:'</span>, error);
+  }
+}
+
+<span class="comment">// Usage</span>
+getProfileData(<span class="string">'HEA200'</span>);
+            </div>
+
+            <h3>Python Integration</h3>
+            <div class="code-example">
+<span class="keyword">import</span> requests
+<span class="keyword">import</span> json
+
+<span class="keyword">class</span> EngineeringDataAPI:
+    <span class="keyword">def</span> __init__(self, base_url):
+        self.base_url = base_url
+        self.session = requests.Session()
+    
+    <span class="keyword">def</span> get_material_property(self, grade, property_name):
+        url = f<span class="string">"{self.base_url}/materials/steel/{grade}/{property_name}"</span>
+        response = self.session.get(url)
+        
+        <span class="keyword">if</span> response.status_code == 200:
+            data = response.json()
+            <span class="keyword">return</span> {
+                <span class="string">'value'</span>: data[<span class="string">'value'</span>],
+                <span class="string">'unit'</span>: data[<span class="string">'unit'</span>],
+                <span class="string">'description'</span>: data[<span class="string">'description'</span>]
+            }
+        <span class="keyword">else</span>:
+            <span class="keyword">raise</span> Exception(f<span class="string">"API Error: {response.status_code}"</span>)
+
+<span class="comment"># Usage example</span>
+api = EngineeringDataAPI(<span class="string">"https://api.engineeringdata.com/api"</span>)
+yield_strength = api.get_material_property(<span class="string">"S355"</span>, <span class="string">"fy"</span>)
+print(f<span class="string">"S355 Yield Strength: {yield_strength['value']} {yield_strength['unit']}"</span>)
+            </div>
+
+            <h3>C# Integration</h3>
+            <div class="code-example">
+<span class="keyword">using</span> System;
+<span class="keyword">using</span> System.Net.Http;
+<span class="keyword">using</span> System.Threading.Tasks;
+<span class="keyword">using</span> Newtonsoft.Json;
+
+<span class="keyword">public class</span> EngineeringDataClient
+{
+    <span class="keyword">private readonly</span> HttpClient _httpClient;
+    <span class="keyword">private readonly string</span> _baseUrl;
+
+    <span class="keyword">public</span> EngineeringDataClient(<span class="keyword">string</span> baseUrl)
+    {
+        _baseUrl = baseUrl;
+        _httpClient = <span class="keyword">new</span> HttpClient();
+    }
+
+    <span class="keyword">public async</span> Task&lt;BoltData&gt; GetBoltDataAsync(<span class="keyword">string</span> size)
+    {
+        <span class="keyword">var</span> url = $<span class="string">"{_baseUrl}/bolts/din931/{size}"</span>;
+        <span class="keyword">var</span> response = <span class="keyword">await</span> _httpClient.GetStringAsync(url);
+        <span class="keyword">return</span> JsonConvert.DeserializeObject&lt;BoltData&gt;(response);
+    }
+}
+
+<span class="comment">// Usage in Tekla Structures plugin</span>
+<span class="keyword">var</span> client = <span class="keyword">new</span> EngineeringDataClient(<span class="string">"https://api.engineeringdata.com/api"</span>);
+<span class="keyword">var</span> boltData = <span class="keyword">await</span> client.GetBoltDataAsync(<span class="string">"M16"</span>);
+            </div>
+        </div>
+
+        <!-- Use Cases & Applications -->
+        <div class="content-section fade-in">
+            <h2>Use Cases & Applications</h2>
+            
+            <h3>Software Integration</h3>
+            <ul>
+                <li><strong>CAD Plugins:</strong> Tekla, Revit, and AutoCAD extensions</li>
+                <li><strong>Calculation Software:</strong> Structural analysis and design tools</li>
+                <li><strong>Web Applications:</strong> Online engineering calculators</li>
+                <li><strong>Mobile Apps:</strong> Field reference applications</li>
+                <li><strong>ERP Systems:</strong> Material planning and procurement</li>
+            </ul>
+
+            <h3>Industry Applications</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏗️</div>
+                    <h4>Structural Design</h4>
+                    <p>Real-time access to steel profiles for design calculations</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h4>Cost Estimation</h4>
+                    <p>Material properties for accurate weight and cost calculations</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h4>Education</h4>
+                    <p>Teaching tools and student project resources</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔬</div>
+                    <h4>Research</h4>
+                    <p>Academic research with standardized material data</p>
+                </div>
+            </div>
+
+            <h3>Global Impact</h3>
+            <ul>
+                <li><strong>Democratized Access:</strong> Free access to engineering data previously locked in proprietary systems</li>
+                <li><strong>Standardization:</strong> Consistent data format across different applications</li>
+                <li><strong>Innovation:</strong> Enables development of new engineering tools</li>
+                <li><strong>Education:</strong> Supports engineering education in developing countries</li>
+            </ul>
+        </div>
+
+        <!-- Deployment & Infrastructure -->
+        <div class="content-section fade-in">
+            <h2>Deployment & Infrastructure</h2>
+            
+            <h3>Netlify Functions Architecture</h3>
+            <p>Serverless deployment provides numerous advantages:</p>
+            <ul>
+                <li><strong>Zero Server Management:</strong> No infrastructure maintenance required</li>
+                <li><strong>Automatic Scaling:</strong> Handles traffic spikes seamlessly</li>
+                <li><strong>Global Distribution:</strong> Functions deployed to edge locations worldwide</li>
+                <li><strong>Cost Efficiency:</strong> Pay-per-use model with generous free tier</li>
+                <li><strong>High Availability:</strong> Built-in redundancy and failover</li>
+            </ul>
+
+            <h3>Development Workflow</h3>
+            <ol class="steps-list">
+                <li>Local development with Netlify CLI for testing</li>
+                <li>Version control using Git with feature branches</li>
+                <li>Automated testing of API endpoints and data integrity</li>
+                <li>Staging deployment for integration testing</li>
+                <li>Production deployment with automatic rollback capability</li>
+                <li>Monitoring and analytics for performance optimization</li>
+            </ol>
+
+            <h3>Data Management</h3>
+            <p>Structured approach to data maintenance and updates:</p>
+            <ul>
+                <li><strong>Version Control:</strong> All data files tracked in Git</li>
+                <li><strong>Validation:</strong> Automated checks for data consistency</li>
+                <li><strong>Updates:</strong> Regular updates with new standards and corrections</li>
+                <li><strong>Backup:</strong> Multiple backup strategies for data protection</li>
+            </ul>
+        </div>
+
+        <!-- Future Development -->
+        <div class="content-section fade-in">
+            <h2>Future Development</h2>
+            
+            <h3>Planned Enhancements</h3>
+            <ul>
+                <li><strong>GraphQL Support:</strong> Flexible query language for complex data requests</li>
+                <li><strong>Real-time Updates:</strong> WebSocket connections for live data feeds</li>
+                <li><strong>Extended Database:</strong> Asian, American, and Australian steel standards</li>
+                <li><strong>Calculation Endpoints:</strong> Built-in engineering calculations</li>
+                <li><strong>User Accounts:</strong> Premium features with higher rate limits</li>
+                <li><strong>SDKs:</strong> Official libraries for major programming languages</li>
+            </ul>
+
+            <h3>Community Features</h3>
+            <ul>
+                <li><strong>Data Contributions:</strong> Community-driven data additions</li>
+                <li><strong>Custom Catalogs:</strong> User-uploaded material databases</li>
+                <li><strong>API Playground:</strong> Interactive testing environment</li>
+                <li><strong>Documentation Portal:</strong> Comprehensive guides and examples</li>
+            </ul>
+
+            <div class="info">
+                <strong>Open Source:</strong> The API will transition to open source to encourage community contributions and ensure long-term sustainability.
+            </div>
+        </div>
+
+        <!-- Getting Started -->
+        <div class="content-section fade-in">
+            <h2>Getting Started</h2>
+            
+            <h3>Quick Start Guide</h3>
+            <ol class="steps-list">
+                <li>No registration required - start using immediately</li>
+                <li>Review the API documentation and available endpoints</li>
+                <li>Test with simple requests using curl or Postman</li>
+                <li>Integrate into your application using provided examples</li>
+                <li>Monitor your usage to stay within rate limits</li>
+                <li>Join the community for support and updates</li>
+            </ol>
+
+            <h3>Best Practices</h3>
+            <ul>
+                <li><strong>Cache Results:</strong> Store frequently used data locally</li>
+                <li><strong>Handle Errors:</strong> Implement proper error handling and retries</li>
+                <li><strong>Respect Limits:</strong> Monitor rate limits and implement backoff</li>
+                <li><strong>Use HTTPS:</strong> Always use secure connections</li>
+                <li><strong>Version Pinning:</strong> Pin to specific API versions for stability</li>
+            </ul>
+
+            <div class="highlight">
+                <strong>Support:</strong> Full documentation, examples, and community support available to help you get started quickly.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

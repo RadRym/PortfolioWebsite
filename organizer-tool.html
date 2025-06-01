@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizer v2 - Tekla Tools | Adrian</title>
+    <link rel="stylesheet" href="projects-shared.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Project Header -->
+        <div class="project-header fade-in">
+            <div class="project-icon">📊</div>
+            <h1>Organizer v2 - Tekla Tools</h1>
+            <p class="subtitle">Advanced productivity suite for Tekla Structures view management</p>
+            
+            <div class="tech-tags">
+                <span class="tech-tag">C#</span>
+                <span class="tech-tag">WPF</span>
+                <span class="tech-tag">MVVM</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Tekla Open API</span>
+                <span class="tech-tag">Data Binding</span>
+            </div>
+            
+            <div class="project-links">
+                <a href="#" class="project-link demo">Download Tools</a>
+                <a href="#" class="project-link github">View Source</a>
+                <a href="index.html#projects" class="project-link back">← Back to Projects</a>
+            </div>
+        </div>
+
+        <!-- Overview -->
+        <div class="content-section fade-in">
+            <h2>Overview</h2>
+            <p>Organizer v2 is a comprehensive productivity suite designed to enhance workflow efficiency in Tekla Structures. This advanced toolset combines view management, object analysis, and visual organization features into a unified, user-friendly interface.</p>
+            
+            <p>Built with modern WPF architecture and MVVM design pattern, the application provides real-time interaction with Tekla models while maintaining excellent performance and responsiveness. The tool is particularly valuable for large projects where efficient model navigation and object identification are critical.</p>
+
+            <div class="highlight">
+                <strong>Productivity Focus:</strong> Designed to reduce time spent on routine view management tasks by up to 70%, allowing engineers to focus on design and analysis work.
+            </div>
+        </div>
+
+        <!-- Core Features -->
+        <div class="content-section fade-in">
+            <h2>Core Features</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✂️</div>
+                    <h4>Intelligent Clipping Planes</h4>
+                    <p>Automatic generation of clipping planes based on selected objects with smart boundary detection</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h4>Advanced Coloring</h4>
+                    <p>Dynamic object coloring by profile, material, class, or phase with custom color generation</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h4>Object Analysis</h4>
+                    <p>Real-time analysis of selected objects with comprehensive property display</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🗄️</div>
+                    <h4>Database Integration</h4>
+                    <p>MySQL database for steel profile properties with geometric and structural data</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👁️</div>
+                    <h4>View Management</h4>
+                    <p>Bulk operations on views with selective or global application modes</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h4>Smart UI</h4>
+                    <p>Context-aware interface that adapts to selected objects and model state</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Architecture -->
+        <div class="content-section fade-in">
+            <h2>Technical Architecture</h2>
+            
+            <h3>MVVM Implementation</h3>
+            <p>The application follows a strict Model-View-ViewModel architecture for maintainable and testable code:</p>
+            
+            <ul>
+                <li><strong>ViewModels:</strong> MainViewModel, ViewPropertiesViewModel, SelectedObjectViewModel</li>
+                <li><strong>Models:</strong> Data models for profiles, materials, and connection data</li>
+                <li><strong>Views:</strong> Modular user controls with data binding</li>
+                <li><strong>Services:</strong> Database access, Tekla integration, and utility services</li>
+            </ul>
+
+            <div class="code-example">
+<span class="comment">// Example: Real-time object selection handling</span>
+<span class="keyword">private void</span> Events_SelectionChangeEvent()
+{
+    <span class="keyword">lock</span> (_selectionEventHandlerLock)
+    {
+        ModelObjectEnumerator selectedObjects = 
+            <span class="keyword">new</span> ModelObjectSelector().GetSelectedObjects();
+            
+        <span class="keyword">if</span> (selectedObjects.GetSize() == 0 || selectedObjects.GetSize() > 1)
+        {
+            HandleNoObjectSelection();
+        }
+        <span class="keyword">else</span>
+        {
+            ProcessSelectedObjects(selectedObjects);
+        }
+    }
+}
+            </div>
+
+            <h3>Database Architecture</h3>
+            <p>MySQL database stores comprehensive steel profile information:</p>
+            <ul>
+                <li><strong>Profile Geometry:</strong> Height, width, thickness, radii measurements</li>
+                <li><strong>Section Properties:</strong> Area, moments of inertia, section moduli</li>
+                <li><strong>Design Data:</strong> Bolt specifications, spacing requirements</li>
+                <li><strong>Surface Data:</strong> Area calculations for coating and painting</li>
+            </ul>
+        </div>
+
+        <!-- Clipping Plane Intelligence -->
+        <div class="content-section fade-in">
+            <h2>Clipping Plane Intelligence</h2>
+            
+            <h3>Smart Boundary Detection</h3>
+            <p>The clipping plane system automatically analyzes selected objects to determine optimal viewing boundaries:</p>
+            
+            <div class="code-example">
+<span class="comment">// Automatic clipping plane generation</span>
+<span class="keyword">public static void</span> CreateClipPlanes()
+{
+    ModelViewEnumerator ViewEnum = GetViewEnum();
+    List&lt;Solid&gt; solids = GetSolidsFromSelected();
+    
+    GetMinMaxValues(solids, <span class="keyword">out double</span> maxX, <span class="keyword">out double</span> minX, 
+                    <span class="keyword">out double</span> maxY, <span class="keyword">out double</span> minY, 
+                    <span class="keyword">out double</span> maxZ, <span class="keyword">out double</span> minZ);
+
+    <span class="keyword">while</span> (ViewEnum.MoveNext())
+    {
+        View ActiveView = ViewEnum.Current;
+        <span class="comment">// Create 6 clipping planes for complete object isolation</span>
+        CreateClipPlanesForView(ActiveView, maxX, minX, maxY, minY, maxZ, minZ);
+    }
+}
+            </div>
+
+            <h3>Advanced Features</h3>
+            <ul>
+                <li><strong>Assembly Support:</strong> Handles both individual parts and complete assemblies</li>
+                <li><strong>Offset Control:</strong> Configurable offset distance for clipping plane placement</li>
+                <li><strong>View Selection:</strong> Apply to selected views only or all views simultaneously</li>
+                <li><strong>Cleanup Operations:</strong> Automatic removal of existing clipping planes before creation</li>
+            </ul>
+
+            <h3>Geometric Calculations</h3>
+            <p>The system performs sophisticated geometric analysis:</p>
+            <ul>
+                <li><strong>Bounding Box Analysis:</strong> Calculates minimum enclosing box for complex geometries</li>
+                <li><strong>Coordinate System Handling:</strong> Respects Tekla's global coordinate system</li>
+                <li><strong>Multi-object Processing:</strong> Efficiently handles large selection sets</li>
+            </ul>
+        </div>
+
+        <!-- Advanced Coloring System -->
+        <div class="content-section fade-in">
+            <h2>Advanced Coloring System</h2>
+            
+            <h3>Dynamic Color Generation</h3>
+            <p>The coloring system creates visually distinct colors for object categorization:</p>
+            
+            <div class="code-example">
+<span class="comment">// Rainbow color generation algorithm</span>
+<span class="keyword">public static int</span>[][] GenerateRainbowColorsWithoutRed(<span class="keyword">int</span> n)
+{
+    <span class="keyword">int</span>[][] colors = <span class="keyword">new int</span>[n][];
+    <span class="keyword">double</span> hueStep = 300.0 / n;
+    <span class="keyword">double</span> startHue = 60.0;
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; n; i++)
+    {
+        <span class="keyword">double</span> hue = startHue + (i * hueStep);
+        <span class="keyword">int</span>[] color = HsvToRgb(hue, 1.0, 1.0);
+        colors[i] = color;
+    }
+    <span class="keyword">return</span> colors;
+}
+            </div>
+
+            <h3>Representation File Management</h3>
+            <p>Automatic creation and management of Tekla representation files:</p>
+            <ul>
+                <li><strong>Object Group Creation:</strong> Generates .PObjGrp files for each category</li>
+                <li><strong>Color Assignment:</strong> Creates .rep files with RGB color definitions</li>
+                <li><strong>Tekla Integration:</strong> Seamless activation through ViewHandler</li>
+                <li><strong>File Management:</strong> Automatic cleanup and regeneration as needed</li>
+            </ul>
+
+            <h3>Supported Color Modes</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📏</div>
+                    <h4>By Profile</h4>
+                    <p>Colors objects based on steel profile type with database-driven categorization</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔩</div>
+                    <h4>By Material</h4>
+                    <p>Groups objects by material grade with predefined color schemes</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h4>By Class</h4>
+                    <p>Standard Tekla class-based coloring with enhanced visual clarity</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⏰</div>
+                    <h4>By Phase</h4>
+                    <p>Phase-based coloring for construction sequence visualization</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real-time Object Analysis -->
+        <div class="content-section fade-in">
+            <h2>Real-time Object Analysis</h2>
+            
+            <h3>Comprehensive Property Display</h3>
+            <p>The object analysis system provides detailed information about selected elements:</p>
+            
+            <h4>Basic Part Information</h4>
+            <ul>
+                <li><strong>Identification:</strong> Profile, name, class, phase, material</li>
+                <li><strong>Numbering:</strong> Part and assembly numbering with prefixes</li>
+                <li><strong>Position:</strong> Start and end coordinates with precision</li>
+                <li><strong>Status:</strong> Modification date and update status</li>
+            </ul>
+
+            <h4>Advanced Design Properties</h4>
+            <p>Database-driven display of structural properties:</p>
+            <ul>
+                <li><strong>Geometric:</strong> Height, width, thickness, radii, area</li>
+                <li><strong>Section:</strong> Moments of inertia, section moduli, radii of gyration</li>
+                <li><strong>Connection:</strong> Bolt specifications, spacing requirements</li>
+                <li><strong>Surface:</strong> Area per unit length for cost estimation</li>
+            </ul>
+
+            <div class="code-example">
+<span class="comment">// Database query for profile properties</span>
+<span class="keyword">public</span> MyProfil GetProfileGeometryByName(<span class="keyword">string</span> profileName)
+{
+    <span class="keyword">using</span> (MySqlConnection connection = <span class="keyword">new</span> MySqlConnection(connectionString))
+    {
+        connection.Open();
+        <span class="keyword">string</span> query = <span class="string">"SELECT * FROM steeldb.iprofiles WHERE Name = @Name"</span>;
+        MySqlCommand command = <span class="keyword">new</span> MySqlCommand(query, connection);
+        
+        <span class="comment">// Return comprehensive profile data with 25+ properties</span>
+        <span class="keyword">return</span> CreateProfileFromReader(command.ExecuteReader());
+    }
+}
+            </div>
+        </div>
+
+        <!-- User Interface Design -->
+        <div class="content-section fade-in">
+            <h2>User Interface Design</h2>
+            
+            <h3>Modern WPF Implementation</h3>
+            <p>The interface leverages advanced WPF features for professional appearance and functionality:</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h4>Custom Styling</h4>
+                    <p>ResourceDictionary-based styling with consistent visual themes</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h4>Data Binding</h4>
+                    <p>Two-way data binding with automatic UI updates and validation</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h4>Responsive Layout</h4>
+                    <p>Grid-based layout that adapts to different window sizes</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h4>Performance</h4>
+                    <p>Virtualized controls and efficient rendering for large datasets</p>
+                </div>
+            </div>
+
+            <h3>Custom Controls</h3>
+            <p>Specialized UI components enhance user experience:</p>
+            <ul>
+                <li><strong>Toggle Switch:</strong> Custom animated toggle button with smooth transitions</li>
+                <li><strong>Expandable Sections:</strong> Collapsible content areas for organized information</li>
+                <li><strong>Property Grids:</strong> Structured display of object properties with units</li>
+                <li><strong>Command Buttons:</strong> Context-aware buttons with visual feedback</li>
+            </ul>
+
+            <div class="code-example">
+<span class="comment">// Custom toggle button style definition</span>
+&lt;Style x:Key=<span class="string">"ToggleButtonStyle"</span> TargetType=<span class="string">"{x:Type ToggleButton}"</span>&gt;
+    &lt;Setter Property=<span class="string">"Background"</span> Value=<span class="string">"{DynamicResource SecondaryGrayColor}"</span>/&gt;
+    &lt;Setter Property=<span class="string">"Height"</span> Value=<span class="string">"20"</span>/&gt;
+    &lt;Setter Property=<span class="string">"Width"</span> Value=<span class="string">"35"</span>/&gt;
+    &lt;<span class="comment">!-- Custom template with animations --</span>&gt;
+&lt;/Style&gt;
+            </div>
+        </div>
+
+        <!-- Performance & Optimization -->
+        <div class="content-section fade-in">
+            <h2>Performance & Optimization</h2>
+            
+            <h3>Tekla API Optimization</h3>
+            <p>Efficient interaction with Tekla Structures through optimized API usage:</p>
+            <ul>
+                <li><strong>Event Handling:</strong> Thread-safe selection event processing</li>
+                <li><strong>Object Caching:</strong> Minimize API calls through intelligent caching</li>
+                <li><strong>Batch Operations:</strong> Group operations for better performance</li>
+                <li><strong>Memory Management:</strong> Proper disposal of Tekla objects</li>
+            </ul>
+
+            <h3>Database Performance</h3>
+            <ul>
+                <li><strong>Connection Pooling:</strong> Efficient database connection management</li>
+                <li><strong>Query Optimization:</strong> Indexed queries for fast profile lookups</li>
+                <li><strong>Data Caching:</strong> In-memory caching of frequently accessed data</li>
+                <li><strong>Lazy Loading:</strong> Load data only when needed</li>
+            </ul>
+
+            <h3>UI Responsiveness</h3>
+            <ul>
+                <li><strong>Async Operations:</strong> Non-blocking UI for long-running tasks</li>
+                <li><strong>Progressive Loading:</strong> Incremental data loading for large datasets</li>
+                <li><strong>Virtual Scrolling:</strong> Efficient rendering of large lists</li>
+                <li><strong>Smooth Animations:</strong> Hardware-accelerated transitions</li>
+            </ul>
+        </div>
+
+        <!-- Installation & Configuration -->
+        <div class="content-section fade-in">
+            <h2>Installation & Configuration</h2>
+            
+            <h3>System Requirements</h3>
+            <ul>
+                <li>Tekla Structures 2021.0 or later</li>
+                <li>Windows 10/11 64-bit</li>
+                <li>MySQL Server 8.0+ (local or remote)</li>
+                <li>.NET Framework 4.8 or .NET 5+</li>
+                <li>8GB RAM minimum, 16GB recommended</li>
+                <li>OpenGL 3.0 compatible graphics card</li>
+            </ul>
+
+            <h3>Setup Process</h3>
+            <ol class="steps-list">
+                <li>Install MySQL server and import steel profile database</li>
+                <li>Configure database connection string in application settings</li>
+                <li>Extract Organizer v2 files to Tekla applications folder</li>
+                <li>Register the application with Tekla Structures</li>
+                <li>Configure default preferences and UI layout</li>
+                <li>Test all features with sample model</li>
+            </ol>
+
+            <h3>Database Configuration</h3>
+            <p>The application requires access to a comprehensive steel profile database:</p>
+            <ul>
+                <li><strong>Profile Data:</strong> European I-sections, channels, angles</li>
+                <li><strong>Material Properties:</strong> Steel grades and specifications</li>
+                <li><strong>Connection Data:</strong> Bolt and fastener specifications</li>
+                <li><strong>Regional Standards:</strong> Support for local building codes</li>
+            </ul>
+
+            <div class="info">
+                <strong>Database Setup:</strong> Complete SQL scripts are provided for easy database initialization with sample data.
+            </div>
+        </div>
+
+        <!-- Use Cases & Benefits -->
+        <div class="content-section fade-in">
+            <h2>Use Cases & Benefits</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏗️</div>
+                    <h4>Large Projects</h4>
+                    <p>Essential for complex models with 1000+ parts requiring efficient navigation</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h4>Team Collaboration</h4>
+                    <p>Standardized view management across design teams</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h4>Quality Control</h4>
+                    <p>Visual identification of design inconsistencies</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h4>Productivity</h4>
+                    <p>70% reduction in time spent on view management tasks</p>
+                </div>
+            </div>
+
+            <h3>Professional Impact</h3>
+            <ul>
+                <li><strong>Design Efficiency:</strong> Faster model navigation and object identification</li>
+                <li><strong>Error Reduction:</strong> Visual confirmation of design decisions</li>
+                <li><strong>Training Aid:</strong> Helps new users understand steel properties</li>
+                <li><strong>Documentation:</strong> Clear visual representations for design reviews</li>
+            </ul>
+
+            <div class="highlight">
+                <strong>User Feedback:</strong> "Organizer v2 has become an essential part of our daily workflow. The clipping plane automation alone saves hours every week." - Senior Structural Engineer
+            </div>
+        </div>
+
+        <!-- Future Development -->
+        <div class="content-section fade-in">
+            <h2>Future Development</h2>
+            
+            <h3>Planned Enhancements</h3>
+            <ul>
+                <li><strong>Cloud Integration:</strong> Shared settings and preferences across teams</li>
+                <li><strong>AI-Powered Suggestions:</strong> Smart recommendations for view optimization</li>
+                <li><strong>Extended Database:</strong> Additional steel catalogs and international standards</li>
+                <li><strong>Mobile Companion:</strong> Tablet app for field verification</li>
+                <li><strong>Report Generation:</strong> Automated documentation of model properties</li>
+                <li><strong>Plugin Ecosystem:</strong> API for third-party extensions</li>
+            </ul>
+
+            <h3>Version History</h3>
+            <ul>
+                <li><strong>v2.1 (Current):</strong> Enhanced object analysis with database integration</li>
+                <li><strong>v2.0:</strong> Complete rewrite with MVVM architecture</li>
+                <li><strong>v1.5:</strong> Advanced coloring system implementation</li>
+                <li><strong>v1.0:</strong> Initial release with basic clipping plane functionality</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

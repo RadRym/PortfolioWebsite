@@ -3,223 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrian Rymarz - .NET Developer & Civil Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
-    <meta name="description" content="Professional .NET Developer & Civil Engineer specializing in Tekla Structures components and automation tools">
-    <meta name="keywords" content=".NET, C#, Tekla Structures, Civil Engineering, Steel Connections">
-    <meta name="author" content="Adrian Rymarz">
-    <meta property="og:title" content="Adrian Rymarz - .NET Developer & Civil Engineer">
-    <meta property="og:description" content="Creating professional components and plugins for Tekla Structures">
-    <meta property="og:type" content="website">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <title>Adrian - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="container">
-            <div class="nav-container">
-                <a href="#" class="logo">Adrian Rymarz</a>
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
+        <ul>
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>.NET Developer & Civil Engineer</h1>
-                    <p class="subtitle">Creating professional components and plugins for Tekla Structures</p>
-                    <p>I combine .NET programming experience with engineering knowledge to deliver solutions that streamline design processes in construction industry.</p>
-                    <div class="cta-buttons">
-                        <a href="#projects" class="btn btn-primary">View Projects</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="projects-mosaic">
-                        <div class="project-image main">
-                            <span>Steel Connection<br>Component</span>
-                        </div>
-                        <div class="project-image">
-                            <span>Excel Export<br>Plugin</span>
-                        </div>
-                        <div class="project-image">
-                            <span>Foundation<br>Calculator</span>
-                        </div>
-                        <div class="project-image">
-                            <span>Tekla<br>Components</span>
-                        </div>
-                        <div class="project-image">
-                            <span>Automation<br>Tools</span>
-                        </div>
-                        <div class="project-image">
-                            <span>Design<br>Utilities</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Adrian</h1>
+            <p>Structural Engineer | Developer | Technical Solutions Creator</p>
+            <a href="#projects" class="cta-button">View My Projects</a>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Combining passion for programming with engineering experience</p>
+    <section id="about" class="section-hidden">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-image">
+                👨‍💻
             </div>
-            <div class="about-content">
-                <div>
-                    <h3>My Story</h3>
-                    <p style="margin-bottom: 1rem;">I'm a civil engineer by education, but my passion for technology led me towards programming. I specialize in .NET technologies and creating solutions for the construction industry.</p>
-                    <p>My components and plugins for Tekla Structures help engineers and designers in their daily work by automating repetitive tasks and increasing design efficiency.</p>
-                </div>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <h3>.NET / C#</h3>
-                        <p>Creating desktop applications and components</p>
-                    </div>
-                    <div class="skill-item">
-                        <h3>Tekla API</h3>
-                        <p>Plugins and components for Tekla Structures</p>
-                    </div>
-                    <div class="skill-item">
-                        <h3>Engineering</h3>
-                        <p>Steel and reinforced concrete structures</p>
-                    </div>
-                    <div class="skill-item">
-                        <h3>Automation</h3>
-                        <p>Streamlining design processes</p>
-                    </div>
-                </div>
+            <div class="about-text">
+                <p>I am a structural engineer with a passion for programming and automation of engineering processes. I specialize in creating applications for the construction industry, particularly plugins for Tekla Structures and web tools that support engineers' work.</p>
+                
+                <p>My experience includes programming in C#, JavaScript, creating WPF applications, and designing APIs. I create solutions that streamline engineers' daily work and automate complex calculations.</p>
+                
+                <p>In my free time, I experiment with new technologies and share knowledge with the engineering community.</p>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">My Projects</h2>
-                <p class="section-subtitle">Components and plugins that streamline work with Tekla Structures</p>
+    <section id="projects" class="section-hidden">
+        <h2>My Projects</h2>
+        <div class="projects-grid">
+            
+            <!-- Tekla Structures Plugin - Support Connection -->
+            <div class="project-card">
+                <div class="project-icon">🔧</div>
+                <h3>Support Connection - Tekla Plugin</h3>
+                <p>Advanced plugin for Tekla Structures for automatic design of support connections to columns, including reinforcement and assembly accessories.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">C#</span>
+                    <span class="tech-tag">WPF</span>
+                    <span class="tech-tag">XAML</span>
+                    <span class="tech-tag">Tekla API</span>
+                </div>
+                <div class="project-links">
+                    <a href="/support-connection.html" class="project-link demo">Details</a>
+                </div>
             </div>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-image api-bg">
-                            🔧 API Interface
-                        </div>
-                        <div class="project-content">
-                            <h3>Engineering API</h3>
-                            <p>RESTful API providing access to structural engineering data including steel profiles, material properties, and fastener specifications.</p>
-                            <div class="project-tags">
-                                <span class="tag">JavaScript</span>
-                                <span class="tag">Netlify Functions</span>
-                                <span class="tag">JSON Database</span>
-                                <span class="tag">REST API</span>
-                            </div>
-                            <a href="projects/engineering-api.html" class="btn btn-primary">Learn More</a>
-                        </div>
-                    </div>
 
-                    <div class="project-card">
-                        <div class="project-image">
-                            Project Screenshot
-                        </div>
-                        <div class="project-content">
-                            <h3>Your Next Project</h3>
-                            <p>Template for your next engineering project. Add description and details here.</p>
-                            <div class="project-tags">
-                                <span class="tag">Technology</span>
-                                <span class="tag">Framework</span>
-                                <span class="tag">Language</span>
-                            </div>
-                            <a href="projects/steel-connections.html" class="btn btn-primary">Learn More</a>
-                        </div>
-                    </div>
+            <!-- Foundation Connection Plugin -->
+            <div class="project-card">
+                <div class="project-icon">🏗️</div>
+                <h3>Foundation-Column Connection - Tekla Plugin</h3>
+                <p>Comprehensive plugin for designing foundation connections with automatic anchor layout, anchor shoes, and reinforcement according to standards.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">C#</span>
+                    <span class="tech-tag">WPF</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">Tekla API</span>
+                </div>
+                <div class="project-links">
+                    <a href="/foundation-connection.html" class="project-link demo">Details</a>
+                </div>
             </div>
+
+            <!-- Orography Factor Tool -->
+            <div class="project-card">
+                <div class="project-icon">🌄</div>
+                <h3>Orography Factor Calculator</h3>
+                <p>Web tool for quick calculation of orography factor based on address. Uses Leaflet maps and elevation APIs for accurate terrain analysis.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">HTML/CSS</span>
+                    <span class="tech-tag">Leaflet</span>
+                    <span class="tech-tag">API Integration</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://radrym.github.io/OrographyFactor/" class="project-link demo">Demo</a>
+                    <a href="/orography-tool.html" class="project-link github">GitHub</a>
+                </div>
+            </div>
+
+            <!-- Tekla Organizer -->
+            <div class="project-card">
+                <div class="project-icon">📊</div>
+                <h3>Organizer v2 - Tekla Tools</h3>
+                <p>Set of tools for organizing views in Tekla Structures: clipping planes, coloring by properties, analysis of selected elements with database integration.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">C#</span>
+                    <span class="tech-tag">WPF</span>
+                    <span class="tech-tag">MVVM</span>
+                    <span class="tech-tag">MySQL</span>
+                </div>
+                <div class="project-links">
+                    <a href="/organizer-tool.html" class="project-link demo">Details</a>
+                </div>
+            </div>
+
+            <!-- Engineering Data API -->
+            <div class="project-card">
+                <div class="project-icon">🔗</div>
+                <h3>Engineering Data API</h3>
+                <p>RESTful API providing data on steel profiles, materials, and bolts with rate limiting and caching. Hosted on Netlify Functions.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">Netlify Functions</span>
+                    <span class="tech-tag">JSON</span>
+                    <span class="tech-tag">REST API</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link demo">API Docs</a>
+                    <a href="/engineering-api.html" class="project-link github">GitHub</a>
+                </div>
+            </div>
+
+            <!-- Web Portfolio -->
+            <div class="project-card">
+                <div class="project-icon">💼</div>
+                <h3>Portfolio Website</h3>
+                <p>Responsive portfolio website with modern design, CSS animations, and contact form integrated with Netlify Forms.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Netlify</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link demo">Live Demo</a>
+                    <a href="#" class="project-link github">GitHub</a>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact-content">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Have a project? Need a custom solution? Drop me a line!</p>
+    <section id="contact" class="section-hidden">
+        <h2>Contact</h2>
+        <div class="contact">
+            <form name="contact" method="POST" data-netlify="true" class="contact-form">
+                <input type="hidden" name="form-name" value="contact">
                 
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span>📧</span>
-                        <span>adrian.rymarz1@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <span>🔗</span>
-                        <span>GitHub</span>
-                    </div>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
                 </div>
-            </div>
-            </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required placeholder="Describe your project or question..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2025 Adrian Rymarz. All rights reserved.</p>
-        </div>
+        <p>&copy; 2024 Adrian. All rights reserved.</p>
     </footer>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe sections for animations
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Navigation background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(255, 255, 255, 0.95)';
-            } else {
-                nav.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

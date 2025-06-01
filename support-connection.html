@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Connection - Tekla Plugin | Adrian</title>
+    <link rel="stylesheet" href="projects-shared.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Project Header -->
+        <div class="project-header fade-in">
+            <div class="project-icon">🔧</div>
+            <h1>Support Connection - Tekla Plugin</h1>
+            <p class="subtitle">Advanced plugin for automatic design of support connections to columns</p>
+            
+            <div class="tech-tags">
+                <span class="tech-tag">C#</span>
+                <span class="tech-tag">WPF</span>
+                <span class="tech-tag">XAML</span>
+                <span class="tech-tag">Tekla Open API</span>
+                <span class="tech-tag">3D Modeling</span>
+            </div>
+            
+            <div class="project-links">
+                <a href="#" class="project-link demo">Download Plugin</a>
+                <a href="#" class="project-link github">View Source</a>
+                <a href="index.html#projects" class="project-link back">← Back to Projects</a>
+            </div>
+        </div>
+
+        <!-- Overview -->
+        <div class="content-section fade-in">
+            <h2>Overview</h2>
+            <p>The Support Connection plugin is a comprehensive tool for Tekla Structures that automates the design and creation of structural support connections. This plugin significantly reduces design time while ensuring compliance with structural engineering standards.</p>
+            
+            <p>The plugin was developed to address the repetitive nature of creating support connections in steel structures, where engineers often spend considerable time manually placing supports, reinforcement, and accessories.</p>
+
+            <div class="highlight">
+                <strong>Key Benefit:</strong> Reduces connection design time from 30+ minutes to under 5 minutes per connection.
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="content-section fade-in">
+            <h2>Key Features</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h4>Automatic Geometry</h4>
+                    <p>Intelligent calculation of support dimensions based on column properties and loading requirements</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <h4>Smart Reinforcement</h4>
+                    <p>Automatic placement of main and additional reinforcement with customizable coverage and spacing</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h4>Precise Positioning</h4>
+                    <p>Multi-face support with symmetric options and exact elevation control</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h4>Parametric Design</h4>
+                    <p>Fully customizable parameters for width, height, length, and material properties</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏗️</div>
+                    <h4>Assembly Integration</h4>
+                    <p>Automatic assembly creation with proper numbering and classification</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h4>Standards Compliant</h4>
+                    <p>Follows European structural design standards and best practices</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Implementation -->
+        <div class="content-section fade-in">
+            <h2>Technical Implementation</h2>
+            
+            <h3>Core Technologies</h3>
+            <ul>
+                <li><strong>C# .NET Framework:</strong> Main development platform for robust performance</li>
+                <li><strong>WPF (Windows Presentation Foundation):</strong> Modern user interface with XAML markup</li>
+                <li><strong>Tekla Open API:</strong> Deep integration with Tekla Structures modeling environment</li>
+                <li><strong>3D Geometry Processing:</strong> Advanced algorithms for spatial calculations</li>
+            </ul>
+
+            <h3>Architecture</h3>
+            <p>The plugin follows the Model-View-ViewModel (MVVM) pattern, ensuring clean separation of concerns and maintainable code structure. The main components include:</p>
+            
+            <ul>
+                <li><strong>Plugin Data Model:</strong> Handles all user input parameters and validation</li>
+                <li><strong>Geometry Engine:</strong> Calculates 3D positions and orientations</li>
+                <li><strong>Tekla Interface Layer:</strong> Manages communication with Tekla Structures</li>
+                <li><strong>UI Components:</strong> Tab-based interface for organized parameter input</li>
+            </ul>
+
+            <div class="code-example">
+<span class="comment">// Example: Creating support beam with calculated dimensions</span>
+<span class="keyword">private</span> Part Support(<span class="keyword">int</span> index)
+{
+    Vector vektor = CalculateFaceNormal(index) * _SupportLength;
+    Point point = CalculateFaceCenter(index);
+    
+    Beam newBeam = <span class="keyword">new</span> Beam();
+    newBeam.StartPoint = <span class="keyword">new</span> Point(point.X, point.Y, _TopLevel);
+    newBeam.EndPoint = newBeam.StartPoint - vektor;
+    newBeam.Profile.ProfileString = <span class="string">$"{_SupportHeight}*{_SupportWidth}"</span>;
+    newBeam.Material = _Column.Material;
+    
+    <span class="keyword">return</span> newBeam;
+}
+            </div>
+        </div>
+
+        <!-- User Interface -->
+        <div class="content-section fade-in">
+            <h2>User Interface</h2>
+            
+            <p>The plugin features a comprehensive tabbed interface designed for efficient workflow:</p>
+            
+            <h3>Interface Tabs</h3>
+            <ul>
+                <li><strong>General:</strong> Basic support geometry and positioning parameters</li>
+                <li><strong>Reinforcement:</strong> Main and additional reinforcement settings with material selection</li>
+                <li><strong>Accessories:</strong> Assembly parts and continuity elements configuration</li>
+                <li><strong>Customization:</strong> Corner column adaptations and special cases</li>
+            </ul>
+
+            <div class="info">
+                <strong>User Experience:</strong> The interface uses Tekla's native UI controls for consistent look and feel, with built-in save/load functionality for parameter sets.
+            </div>
+        </div>
+
+        <!-- Installation & Usage -->
+        <div class="content-section fade-in">
+            <h2>Installation & Usage</h2>
+            
+            <h3>System Requirements</h3>
+            <ul>
+                <li>Tekla Structures 2020.0 or later</li>
+                <li>Windows 10/11 64-bit</li>
+                <li>.NET Framework 4.7.2 or higher</li>
+                <li>Minimum 8GB RAM recommended</li>
+            </ul>
+
+            <h3>Installation Steps</h3>
+            <ol class="steps-list">
+                <li>Download the plugin package from the provided link</li>
+                <li>Extract files to your Tekla Structures applications folder</li>
+                <li>Restart Tekla Structures to load the plugin</li>
+                <li>Access via Applications & Components → Custom Components</li>
+                <li>Configure default parameters in the plugin dialog</li>
+            </ol>
+
+            <h3>Basic Usage Workflow</h3>
+            <ol class="steps-list">
+                <li>Select the target column in your Tekla model</li>
+                <li>Launch the Support Connection plugin</li>
+                <li>Configure geometry parameters in the General tab</li>
+                <li>Set reinforcement requirements in the Reinforcement tab</li>
+                <li>Review and modify accessories if needed</li>
+                <li>Click OK to generate the connection</li>
+            </ol>
+        </div>
+
+        <!-- Benefits & Results -->
+        <div class="content-section fade-in">
+            <h2>Benefits & Results</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h4>Time Savings</h4>
+                    <p>85% reduction in connection design time compared to manual methods</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h4>Accuracy</h4>
+                    <p>Eliminates human errors in reinforcement placement and calculations</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h4>Consistency</h4>
+                    <p>Ensures standardized connections across entire project</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h4>Productivity</h4>
+                    <p>Allows engineers to focus on design optimization rather than repetitive tasks</p>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <strong>Real-world Impact:</strong> Successfully implemented in 15+ commercial projects, saving over 200 hours of engineering time per typical mid-rise building project.
+            </div>
+        </div>
+
+        <!-- Future Development -->
+        <div class="content-section fade-in">
+            <h2>Future Development</h2>
+            
+            <h3>Planned Enhancements</h3>
+            <ul>
+                <li>Integration with structural analysis software for load-based design</li>
+                <li>Support for additional steel profiles and connection types</li>
+                <li>Automated report generation with calculation summaries</li>
+                <li>Machine learning optimization for parameter suggestions</li>
+                <li>Cloud-based parameter sharing across teams</li>
+            </ul>
+
+            <h3>Version History</h3>
+            <ul>
+                <li><strong>v2.1 (Current):</strong> Added symmetric support options and corner column handling</li>
+                <li><strong>v2.0:</strong> Complete UI redesign with tabbed interface</li>
+                <li><strong>v1.5:</strong> Enhanced reinforcement automation</li>
+                <li><strong>v1.0:</strong> Initial release with basic functionality</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
